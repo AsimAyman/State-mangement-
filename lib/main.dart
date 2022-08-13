@@ -8,26 +8,39 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return  MaterialApp(
       debugShowCheckedModeBanner: false,
       home: CounterPro(),
     );
   }
 }
 
-class CounterPro extends StatelessWidget {
-  const CounterPro({Key? key}) : super(key: key);
+class CounterPro extends StatefulWidget {
+   CounterPro({Key? key}) : super(key: key);
+
+  @override
+  State<CounterPro> createState() => _CounterProState();
+}
+
+class _CounterProState extends State<CounterPro> {
+  int counter = 0;
 
   @override
   Widget build(BuildContext context) {
+    print('main rebuild');
     return Scaffold(
       appBar: AppBar(title: const Text('Demo')),
-      body: const Center(
-        child: Dashboard(),
+      body: Center(
+        child: Dashboard(counter: counter,
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
-        onPressed: () {},
+        onPressed: () {
+          setState(() {
+            counter ++;
+          });
+        },
       ),
     );
   }

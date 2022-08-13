@@ -3,10 +3,11 @@ import 'counter1.dart';
 import 'counter2.dart';
 
 class Dashboard extends StatelessWidget {
-  const Dashboard({Key? key}) : super(key: key);
-
+   Dashboard({required this.counter,Key? key}) : super(key: key);
+   int counter;
   @override
   Widget build(BuildContext context) {
+    print('dash rebuild');
     return Card(
       elevation: 10,
       child: SizedBox(
@@ -20,9 +21,9 @@ class Dashboard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Counter1(),
+                Counter1(counter: counter),
                 const SizedBox(width: 20),
-                Counter2(),
+                Counter2(counter: counter),
               ],
             ),
           ],
